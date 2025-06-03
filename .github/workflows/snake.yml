@@ -1,9 +1,12 @@
 # .github/workflows/snake.yml
 name: Generate Snake
 
+# 1) explizit Schreibrechte für contents setzen
+permissions:
+  contents: write
+
 on:
   schedule:
-    # Läuft alle 6 Stunden
     - cron: "0 */6 * * *"
   workflow_dispatch:
 
@@ -14,8 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Platane/snk in Version v3 nutzen – hier wird das „outputs“-Feld verwendet,
-      # wodurch die alten set-output-Aufrufe wegfallen.
+      # 2) Platane/snk@v3 für das "Snake"-GIF/SVG
       - uses: Platane/snk@v3
         with:
           github_user_name: mishmanners
@@ -25,10 +27,11 @@ jobs:
 
       - run: git status
 
+      # 3) Push-Step: „token:“ statt „github_token:“
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
           force: true
 
