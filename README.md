@@ -1,6 +1,6 @@
 ## Hi there 👋
 
-![snake gif](https://github.com/safeth25/safeth25/blob/output/github-contribution-grid-snake.svg)
+![snake gif](https://github.com/safeth25/safeth25/blob/output/github-contribution-grid-snake-dark.svg)
 <!--
 **safeth25/safeth25** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
