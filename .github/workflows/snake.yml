@@ -1,7 +1,6 @@
 # .github/workflows/snake.yml
 name: Generate Snake
 
-# 1) explizit Schreibrechte für contents setzen
 permissions:
   contents: write
 
@@ -17,17 +16,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # 2) Platane/snk@v3 für das "Snake"-GIF/SVG
+      # Platane/snk v3: zwei Ausgaben (Light + Dark)
       - uses: Platane/snk@v3
         with:
           github_user_name: mishmanners
           outputs: |
-            dist/github-contribution-grid-snake.gif
+            # 1. helles SVG (Standard-Palette)
             dist/github-contribution-grid-snake.svg
+            # 2. dunkles SVG mit der Palette github-dark
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
       - run: git status
 
-      # 3) Push-Step: „token:“ statt „github_token:“
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
